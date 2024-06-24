@@ -46,7 +46,7 @@ class Database:
                             (book_id,))
         self.connect.commit()
 
-    def get_book(self, title):
+    def get_book_by_title(self, title):
         self.cursor.execute("SELECT * FROM books WHERE title == ?",
                             (title,))
         results = self.cursor.fetchone()

@@ -42,5 +42,5 @@ class TestCollection:
 
     def test_get_book(self, db):
         database = Database()
-        result = database.get_book('Title_4')
+        result = database.get_book_by_title('Title_4')
         assert result is None
