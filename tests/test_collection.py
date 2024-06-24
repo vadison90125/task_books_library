@@ -30,12 +30,17 @@ class TestCollection:
 
     def test_update_info_book_by_id(self, db):
         database = Database()
-        update_info = database.update_info_book_by_id(3)
-        assert update_info == [(3, 'Title_4', 'Author_3', 2010)]
+        database.update_info_book_by_id(3)
+        info_book = database.get_info_book_by_id(3)
+        assert info_book == ('Title_4', 'Author_3', 2010)
 
+    def test_delete_book_by_id(self, db):
+        database = Database()
+        database.delete_book_by_id(2)
+        info_book = database.get_info_book_by_id(2)
+        assert info_book is None
 
-
-    def test_get_not_exist_book(self, db):
-        assert True
-
-
+    def test_get_book(self, db):
+        database = Database()
+        result = database.get_book('Title_4')
+        assert result is None

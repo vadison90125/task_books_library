@@ -17,4 +17,4 @@ def db():
     database.add_book(f'Title_2', f'Author_2', 2000)
     database.add_book(f'Title_3', f'Author_3', 2010)
     yield None
-    database.delete()
+    database.delete_db()

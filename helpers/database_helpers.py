@@ -1,5 +1,5 @@
-import os
 import sqlite3
+import os
 
 
 class Database:
@@ -14,7 +14,7 @@ class Database:
         self.cursor.execute('''CREATE TABLE books (id INTEGER PRIMARY KEY, title TEXT, author TEXT, year INTEGER)''')
         self.connect.commit()
 
-    def delete(self):
+    def delete_db(self):
         self.connect.close()
         os.remove(self.db)
 
@@ -30,14 +30,25 @@ class Database:
         return results
 
     def get_info_book_by_id(self, book_id):
-        self.cursor.execute("SELECT title, author, year FROM books WHERE id == ?", (book_id,))
+        self.cursor.execute("SELECT title, author, year FROM books WHERE id == ?",
+                            (book_id,))
         result = self.cursor.fetchone()
         self.connect.close()
         return result
 
     def update_info_book_by_id(self, book_id):
-        self.cursor.execute("UPDATE books SET title = ? WHERE id = ?", ('Title_4', book_id))
+        self.cursor.execute("UPDATE books SET title = ? WHERE id == ?",
+                            ('Title_4', book_id))
         self.connect.commit()
-        result = self.cursor.fetchone()
+
+    def delete_book_by_id(self, book_id):
+        self.cursor.execute("DELETE FROM books WHERE id == ?",
+                            (book_id,))
+        self.connect.commit()
+
+    def get_book(self, title):
+        self.cursor.execute("SELECT * FROM books WHERE title == ?",
+                            (title,))
+        results = self.cursor.fetchone()
         self.connect.close()
-        return result
+        return results
