@@ -19,7 +19,7 @@ pip install pytest
 * [ test_update_info_book_by_id ]
 * [ test_delete_book_by_id ]
 #### Negative Tests:
-* [ test_get_book ]
+* [ test_get_not_exist_book ]
 #### To run tests:
 From /task_book_library/tests/, type command:
 ```sh

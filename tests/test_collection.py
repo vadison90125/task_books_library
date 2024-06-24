@@ -40,7 +40,7 @@ class TestCollection:
         info_book = database.get_info_book_by_id(2)
         assert info_book is None
 
-    def test_get_book(self, db):
+    def test_get_not_exist_book(self, db):
         database = Database()
         result = database.get_book_by_title('Title_4')
         assert result is None
