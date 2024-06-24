@@ -25,5 +25,3 @@ From /task_book_library/tests/, type command:
 ```sh
 pytest
 ```
-
-
